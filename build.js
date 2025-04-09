@@ -1,5 +1,3 @@
-// TODO: highlight latest
-
 const fs = require("fs");
 const path = require("path");
 
@@ -60,7 +58,7 @@ const placeString = (index) => {
   if (index === 1) return "🥈";
   if (index === 2) return "🥉";
   return "#" + (index + 1);
-}
+};
 
 if (!fs.existsSync("_site")) {
   fs.mkdirSync("_site");
@@ -95,7 +93,10 @@ fs.writeFileSync(
       ${bigIndentSpaces}
       <span class="max-sm:hidden">midmark:</span> ${round(run.midmark_time, 3)}s
       /
-      <span class="max-sm:hidden">sandmark:</span> ${round(run.sandmark_time, 3)}s
+      <span class="max-sm:hidden">sandmark:</span> ${round(
+          run.sandmark_time,
+          3
+        )}s
     </p>
   </div>
   <p class="${highlightAsLatest ? "text-red-600/75" : "text-gray-400"}">
