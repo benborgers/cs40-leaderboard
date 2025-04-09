@@ -86,12 +86,12 @@ fs.writeFileSync(
         return `
 <div>
   <div>
-    <p>
+    <p class="font-bold">
       ${smallIndentSpaces}${place}:
       ${run.name}
       ${run.subtitle ? `(${run.subtitle})` : ""}
     </p>
-    <p>
+    <p class="text-gray-700">
       ${bigIndentSpaces}
       <span class="max-sm:hidden">midmark:</span> ${round(run.midmark_time, 3)}s
       /
