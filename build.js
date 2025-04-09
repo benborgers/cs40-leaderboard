@@ -93,9 +93,9 @@ fs.writeFileSync(
     </p>
     <p>
       ${bigIndentSpaces}
-      midmark: ${round(run.midmark_time, 3)}s
+      <span class="max-sm:hidden">midmark:</span> ${round(run.midmark_time, 3)}s
       /
-      sandmark: ${round(run.sandmark_time, 3)}s
+      <span class="max-sm:hidden">sandmark:</span> ${round(run.sandmark_time, 3)}s
     </p>
   </div>
   <p class="${highlightAsLatest ? "text-red-600/75" : "text-gray-400"}">
