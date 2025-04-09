@@ -20,9 +20,23 @@
         --color-gray-950: var(--color-stone-950);
       }
     </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-white antialiased">
-    {{ PLACEHOLDER }}
+  <body
+    class="bg-white antialiased font-[Courier_Prime] p-4 sm:p-6 pb-24 sm:pb-24"
+  >
+    <div>
+      <div>
+        <p class="uppercase">CS 40 Profiling Leaderboard</p>
+      </div>
+      <div class="mt-4">{{ PLACEHOLDER }}</div>
+    </div>
 
     <script>
       function formatRelativeTime(timestamp) {
