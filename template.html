@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS 40 Profiling Leaderboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-gray-50: var(--color-stone-50);
+        --color-gray-100: var(--color-stone-100);
+        --color-gray-200: var(--color-stone-200);
+        --color-gray-300: var(--color-stone-300);
+        --color-gray-400: var(--color-stone-400);
+        --color-gray-500: var(--color-stone-500);
+        --color-gray-600: var(--color-stone-600);
+        --color-gray-700: var(--color-stone-700);
+        --color-gray-800: var(--color-stone-800);
+        --color-gray-900: var(--color-stone-900);
+        --color-gray-950: var(--color-stone-950);
+      }
+    </style>
+  </head>
+  <body class="bg-white antialiased">
+    {{ PLACEHOLDER }}
+
+    <script>
+      function formatRelativeTime(timestamp) {
+        const now = Date.now();
+        const diffInMs = now - timestamp;
+
+        const diffInSeconds = diffInMs / 1000;
+
+        if (diffInSeconds < 60) {
+          return "just now";
+        } else if (diffInSeconds < 3600) {
+          const minutes = Math.floor(diffInSeconds / 60);
+          return `${minutes} minute${minutes === 1 ? "" : "s"} ago`;
+        } else if (diffInSeconds < 86400) {
+          const hours = Math.floor(diffInSeconds / 3600);
+          return `${hours} hour${hours === 1 ? "" : "s"} ago`;
+        } else {
+          const days = Math.floor(diffInSeconds / 86400);
+          return `${days} day${days === 1 ? "" : "s"} ago`;
+        }
+      }
+
+      document.querySelectorAll("[data-timestamp]").forEach((element) => {
+        const timestamp = parseInt(element.getAttribute("data-timestamp"));
+        if (!isNaN(timestamp)) {
+          element.textContent = formatRelativeTime(timestamp);
+        }
+      });
+    </script>
+  </body>
+</html>
