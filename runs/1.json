@@ -1,1 +1,9 @@
-{"id": "erlang", "name": "Solution in Erlang", "midmark_time": 295.957, "sandmark_time": 7263.504, "timestamp": "20250410190213489474", "timestamp_override": "Fall 2022", "subtitle": "Written by Mark Sheldon"}
+{
+  "id": "erlang",
+  "name": "Solution in Erlang",
+  "midmark_time": 295.957,
+  "sandmark_time": 7263.504,
+  "timestamp": "20250410190213489474",
+  "timestamp_override": "Fall 2022",
+  "subtitle": "Mark Sheldon"
+}
