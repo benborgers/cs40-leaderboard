@@ -19,6 +19,16 @@ const runs = runFiles.map((file) => {
   return JSON.parse(content);
 });
 
+const pythonTimestampToDate = (timestamp) => {
+  const year = timestamp.slice(0, 4);
+  const month = timestamp.slice(4, 6);
+  const day = timestamp.slice(6, 8);
+  const hour = timestamp.slice(8, 10);
+  const minute = timestamp.slice(10, 12);
+  const second = timestamp.slice(12, 14);
+  return new Date(year, month - 1, day, hour, minute, second);
+};
+
 const latestRunsByID = runs.reduce((acc, run) => {
   if (!acc[run.id] || pythonTimestampToDate(run.timestamp).getTime() > pythonTimestampToDate(acc[run.id].timestamp).getTime()) {
     acc[run.id] = run;
@@ -34,16 +44,6 @@ const round = (num, places) => {
   return (
     Math.round(num * Math.pow(10, places)) / Math.pow(10, places)
   ).toFixed(3);
-};
-
-const pythonTimestampToDate = (timestamp) => {
-  const year = timestamp.slice(0, 4);
-  const month = timestamp.slice(4, 6);
-  const day = timestamp.slice(6, 8);
-  const hour = timestamp.slice(8, 10);
-  const minute = timestamp.slice(10, 12);
-  const second = timestamp.slice(12, 14);
-  return new Date(year, month - 1, day, hour, minute, second);
 };
 
 const latestRun = Object.values(latestRunsByID).reduce((latest, current) => {
