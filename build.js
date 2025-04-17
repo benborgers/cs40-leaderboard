@@ -37,7 +37,7 @@ const latestRunsByID = runs.reduce((acc, run) => {
 }, {});
 
 const sortedRuns = Object.values(latestRunsByID).sort(
-  (a, b) => pythonTimestampToDate(b.timestamp).getTime() - pythonTimestampToDate(a.timestamp).getTime()
+  (a, b) => calculateScore(a) - calculateScore(b)
 );
 
 const round = (num, places) => {
