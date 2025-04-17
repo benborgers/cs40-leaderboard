@@ -82,7 +82,7 @@ fs.writeFileSync(
           ONE_DAY_IN_MS;
 
         return `
-<div>
+<div class="max-w-max pr-4 ${run.name.toLowerCase().includes("reference") ? "bg-amber-100" : ""}">
   <div>
     <p class="font-bold">
       ${smallIndentSpaces}${place}:
