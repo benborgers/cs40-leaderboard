@@ -19,16 +19,15 @@ const runs = runFiles.map((file) => {
   return JSON.parse(content);
 });
 
-const bestRunsByID = runs.reduce((acc, run) => {
-  const score = calculateScore(run);
-  if (!acc[run.id] || score < calculateScore(acc[run.id])) {
+const latestRunsByID = runs.reduce((acc, run) => {
+  if (!acc[run.id] || pythonTimestampToDate(run.timestamp).getTime() > pythonTimestampToDate(acc[run.id].timestamp).getTime()) {
     acc[run.id] = run;
   }
   return acc;
 }, {});
 
-const sortedRuns = Object.values(bestRunsByID).sort(
-  (a, b) => calculateScore(a) - calculateScore(b)
+const sortedRuns = Object.values(latestRunsByID).sort(
+  (a, b) => pythonTimestampToDate(b.timestamp).getTime() - pythonTimestampToDate(a.timestamp).getTime()
 );
 
 const round = (num, places) => {
@@ -47,7 +46,7 @@ const pythonTimestampToDate = (timestamp) => {
   return new Date(year, month - 1, day, hour, minute, second);
 };
 
-const latestRun = Object.values(bestRunsByID).reduce((latest, current) => {
+const latestRun = Object.values(latestRunsByID).reduce((latest, current) => {
   const currentTime = pythonTimestampToDate(current.timestamp).getTime();
   const latestTime = pythonTimestampToDate(latest.timestamp).getTime();
   return currentTime > latestTime ? current : latest;
